@@ -1,13 +1,19 @@
 import sys
-import PyPDF2 as pyf
-from functions.validationActionAndPdfName import validationActionAndPdfName
-from functions.Test import Test
-from functions.Blabla import Blabla
+from functions.baseFunctions import validationActionAndPdfName
+from functions.GetOnePage import GetOnePage
 
 action = sys.argv[1]
-filePath = sys.argv[2]
+file = sys.argv[2]
+pages = sys.argv[3:]
 
-if validationActionAndPdfName(action, filePath):
-    print('code here :D')
+if validationActionAndPdfName(action, file):
+
+    file = f'./pdfs/' + file
+
+    match action:
+        case 'GetOnePage':
+            exec = GetOnePage()
+            exec.execute(file, pages)
+    
 else:
     print('Some of the parameters are wrong')
