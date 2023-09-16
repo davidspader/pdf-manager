@@ -1,9 +1,10 @@
 import sys
-from functions.baseFunctions import validationActionAndPdfName
+from functions.baseFunctions import validationActionAndPdfName, removeAllPagesFiles
 from functions.GetOnePage import GetOnePage
 from functions.GetAllPages import GetAllPages
 from functions.GetFirstPage import GetFirstPage
 from functions.GetLastPage import GetLastPage
+from functions.GetPages import GetPages
 
 action = sys.argv[1]
 file = sys.argv[2]
@@ -26,5 +27,8 @@ if validationActionAndPdfName(action, file):
         case 'GetLastPage':
             exec = GetLastPage()
             exec.execute(path)
+        case 'GetPages':
+            exec = GetPages()
+            exec.execute(path, pages)
 else:
     print('Some of the parameters are wrong')
