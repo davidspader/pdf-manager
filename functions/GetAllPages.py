@@ -8,6 +8,6 @@ class GetAllPages:
             
             for i, page in enumerate(allPages):
                 newPath = path.replace(".pdf", f"-{i + 1}.pdf")
-                writePDF(page, newPath)
+                writePDF(page, newPath, True)
         except:
             print('Some of the parameters are wrong')

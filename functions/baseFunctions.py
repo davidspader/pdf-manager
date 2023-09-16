@@ -16,8 +16,12 @@ def getAllFunctionsName():
     return functionsName
 
 
-def getAllFilesName():
-    path = os.getcwd() + '/pdfs/'
+def getAllFilesName(allPages=False):
+    if not allPages:
+        path = os.getcwd() + '/pdfs/'
+    else:
+        path = os.getcwd() + '/pdfs/allPages/'
+
     pdfsName = []
 
     for pdf in os.listdir(path):
@@ -44,7 +48,19 @@ def separeteAllPages(file):
 
     return allPages
 
-def writePDF(file, path):
-    path = path.replace('.pdf', '-new.pdf')
+def writePDF(file, path, allPages=False):
+    if not allPages:
+        path = path.replace('.pdf', '-new.pdf')
+    else:
+        path = path.replace('/pdfs/', '/pdfs/allPages/')
+
     with Path(path).open(mode='wb') as finalPDF:
         file.write(finalPDF)
+
+def removeAllPagesFiles():
+    path = os.getcwd() + '/pdfs/allPages/'
+    fileNames = getAllFilesName(True)
+
+    for fileName in fileNames:
+        os.remove(path + fileName)
+    
