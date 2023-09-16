@@ -12,11 +12,11 @@ if validationActionAndPdfName(action, file):
     path = f'./pdfs/' + file
 
     match action:
-        case 'GetOnePage':
-            exec = GetOnePage()
-            exec.execute(path, pages)
         case 'GetAllPages':
             exec = GetAllPages()
             exec.execute(path)
+        case 'GetOnePage':
+            exec = GetOnePage()
+            exec.execute(path, pages)
 else:
     print('Some of the parameters are wrong')

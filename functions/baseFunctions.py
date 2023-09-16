@@ -1,11 +1,34 @@
 import PyPDF2 as pyf
 from pathlib import Path
-from functions.getAllFunctionsName import functionsName, pdfsName
+import os
+
+def getAllFunctionsName():
+    path = os.getcwd() + '/functions/'
+    functionsName = []
+
+    for function in os.listdir(path):
+        if function[-3:] == '.py':
+            function = function.split('.')[0]
+            functionsName.append(function)
+
+    functionsName.remove('baseFunctions')
+
+    return functionsName
+
+
+def getAllFilesName():
+    path = os.getcwd() + '/pdfs/'
+    pdfsName = []
+
+    for pdf in os.listdir(path):
+        pdfsName.append(pdf)
+    
+    return pdfsName
 
 def validationActionAndPdfName(action, pdfName):
-    if not pdfName in pdfsName:
+    if not pdfName in getAllFilesName():
         return False
-    if not action in functionsName:
+    if not action in getAllFunctionsName():
         return False
     return True
 
