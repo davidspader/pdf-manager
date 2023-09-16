@@ -2,6 +2,7 @@ import sys
 from functions.baseFunctions import validationActionAndPdfName
 from functions.GetOnePage import GetOnePage
 from functions.GetAllPages import GetAllPages
+from functions.GetFirstPage import GetFirstPage
 
 action = sys.argv[1]
 file = sys.argv[2]
@@ -18,5 +19,8 @@ if validationActionAndPdfName(action, file):
         case 'GetOnePage':
             exec = GetOnePage()
             exec.execute(path, pages)
+        case 'GetFirstPage':
+            exec = GetFirstPage()
+            exec.execute(path)
 else:
     print('Some of the parameters are wrong')
