@@ -13,7 +13,7 @@ pages = sys.argv[3:]
 
 if validationActionAndPdfName(action, file):
 
-    path = f'./pdfs/' + file
+    path = r'./pdfs/' + file
 
     match action:
         case 'GetAllPages':

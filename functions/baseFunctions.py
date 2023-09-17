@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 
 def getAllFunctionsName():
-    path = os.getcwd() + '/functions/'
+    path = os.getcwd() + r'/functions/'
     functionsName = []
 
     for function in os.listdir(path):
@@ -18,9 +18,9 @@ def getAllFunctionsName():
 
 def getAllFilesName(allPages=False):
     if not allPages:
-        path = os.getcwd() + '/pdfs/'
+        path = os.getcwd() + r'/pdfs/'
     else:
-        path = os.getcwd() + '/pdfs/allPages/'
+        path = os.getcwd() + r'/pdfs/allPages/'
 
     pdfsName = []
 
@@ -52,13 +52,13 @@ def writePDF(file, path, allPages=False):
     if not allPages:
         path = path.replace('.pdf', '-new.pdf')
     else:
-        path = path.replace('/pdfs/', '/pdfs/allPages/')
+        path = path.replace(r'/pdfs/', '/pdfs/allPages/')
 
     with Path(path).open(mode='wb') as finalPDF:
         file.write(finalPDF)
 
 def removeAllPagesFiles():
-    path = os.getcwd() + '/pdfs/allPages/'
+    path = os.getcwd() + r'/pdfs/allPages/'
     fileNames = getAllFilesName(True)
 
     for fileName in fileNames:
