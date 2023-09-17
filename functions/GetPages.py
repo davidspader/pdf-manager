@@ -1,4 +1,4 @@
-from functions.baseFunctions import removeAllPagesFiles, writePDF
+from functions.baseFunctions import removeAllPagesFiles, writePDF, validatePages
 from functions.GetAllPages import GetAllPages
 import PyPDF2 as pyf
 
@@ -6,6 +6,10 @@ class GetPages:
 
     def execute(self, path, pages):
         try:
+            pages = validatePages(pages)
+            
+            print(pages)
+
             exec = GetAllPages()
             exec.execute(path)
 

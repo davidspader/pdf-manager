@@ -66,4 +66,21 @@ def removeAllPagesFiles():
 
     for fileName in fileNames:
         os.remove(path + fileName)
+
+def validatePages(pages):
+    newPages = []
+
+    if(pages[1] == 'to'):
+        index = int(pages[0])
+        newPages = []
+
+        while index < int(pages[2]) + 1:
+            newPages.append(f'{index}')
+            index += 1
+
+        return newPages
+    
+    return pages
+
+
     
