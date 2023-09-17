@@ -7,6 +7,7 @@ from functions.GetLastPage import GetLastPage
 from functions.GetPages import GetPages
 from functions.GetMerge import GetMerge
 from functions.GetRotatePages import GetRotatePages
+from functions.DeletePages import DeletePages
 
 action = sys.argv[1]
 file = sys.argv[2]
@@ -32,14 +33,17 @@ if validationActionAndPdfName(action, file):
         case 'GetPages':
             exec = GetPages()
             exec.execute(path, pages)
+        case 'RemoveAllPagesFiles':
+            removeAllPagesFiles()
         case 'GetMerge':
             exec = GetMerge()
             exec.execute(path, pages)
         case 'GetRotatePages':
             exec = GetRotatePages()
             exec.execute(path, pages)
-        case 'RemoveAllPagesFiles':
-            removeAllPagesFiles()
+        case 'DeletePages':
+            exec = DeletePages()
+            exec.execute(path, pages)
 else:
     print(validationActionAndPdfName(action, file))
     print('Some of the parameters are wrong')
