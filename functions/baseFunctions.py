@@ -27,7 +27,8 @@ def getAllFilesName(allPages=False):
 
     for pdf in os.listdir(path):
         pdfsName.append(pdf)
-    
+
+    pdfsName.sort()
     return pdfsName
 
 def validationActionAndPdfName(action, pdfName):
@@ -68,6 +69,9 @@ def removeAllPagesFiles():
         os.remove(path + fileName)
 
 def validatePages(pages):
+    if len(pages) == 1:
+        return pages
+    
     newPages = []
 
     if(pages[1] == 'to'):
