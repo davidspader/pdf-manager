@@ -5,6 +5,7 @@ from functions.GetAllPages import GetAllPages
 from functions.GetFirstPage import GetFirstPage
 from functions.GetLastPage import GetLastPage
 from functions.GetPages import GetPages
+from functions.GetMerge import GetMerge
 
 action = sys.argv[1]
 file = sys.argv[2]
@@ -29,6 +30,9 @@ if validationActionAndPdfName(action, file):
             exec.execute(path)
         case 'GetPages':
             exec = GetPages()
+            exec.execute(path, pages)
+        case 'GetMerge':
+            exec = GetMerge()
             exec.execute(path, pages)
 else:
     print('Some of the parameters are wrong')
