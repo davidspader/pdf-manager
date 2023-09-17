@@ -1,5 +1,5 @@
 import sys
-from functions.baseFunctions import validationActionAndPdfName
+from functions.baseFunctions import validationActionAndPdfName, removeAllPagesFiles
 from functions.GetOnePage import GetOnePage
 from functions.GetAllPages import GetAllPages
 from functions.GetFirstPage import GetFirstPage
@@ -38,5 +38,8 @@ if validationActionAndPdfName(action, file):
         case 'GetRotatePages':
             exec = GetRotatePages()
             exec.execute(path, pages)
+        case 'RemoveAllPagesFiles':
+            removeAllPagesFiles()
 else:
+    print(validationActionAndPdfName(action, file))
     print('Some of the parameters are wrong')

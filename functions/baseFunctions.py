@@ -12,6 +12,7 @@ def getAllFunctionsName():
             functionsName.append(function)
 
     functionsName.remove('baseFunctions')
+    functionsName.append('RemoveAllPagesFiles')
 
     return functionsName
 
@@ -31,7 +32,9 @@ def getAllFilesName(allPages=False):
 
 def validationActionAndPdfName(action, pdfName):
     if not pdfName in getAllFilesName():
-        return False
+        if not pdfName == 'noFile':
+            print('passou aqui')
+            return False
     if not action in getAllFunctionsName():
         return False
     return True
