@@ -8,8 +8,6 @@ class GetPages:
         try:
             pages = validatePages(pages)
             
-            print(pages)
-
             exec = GetAllPages()
             exec.execute(path)
 
