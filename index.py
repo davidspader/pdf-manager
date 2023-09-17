@@ -11,7 +11,7 @@ from functions.DeletePages import DeletePages
 
 action = sys.argv[1]
 file = sys.argv[2]
-pages = sys.argv[3:]
+thirdParameter = sys.argv[3:]
 
 if validationActionAndPdfName(action, file):
 
@@ -23,7 +23,7 @@ if validationActionAndPdfName(action, file):
             exec.execute(path)
         case 'GetOnePage':
             exec = GetOnePage()
-            exec.execute(path, pages)
+            exec.execute(path, thirdParameter)
         case 'GetFirstPage':
             exec = GetFirstPage()
             exec.execute(path)
@@ -32,18 +32,19 @@ if validationActionAndPdfName(action, file):
             exec.execute(path)
         case 'GetPages':
             exec = GetPages()
-            exec.execute(path, pages)
+            exec.execute(path, thirdParameter)
         case 'RemoveAllPagesFiles':
             removeAllPagesFiles()
         case 'GetMerge':
             exec = GetMerge()
-            exec.execute(path, pages)
+            exec.execute(path, thirdParameter)
         case 'GetRotatePages':
             exec = GetRotatePages()
-            exec.execute(path, pages)
+            exec.execute(path, thirdParameter)
         case 'DeletePages':
             exec = DeletePages()
-            exec.execute(path, pages)
+            exec.execute(path, thirdParameter)
+    print('successfully executed')
 else:
     print(validationActionAndPdfName(action, file))
     print('Some of the parameters are wrong')
